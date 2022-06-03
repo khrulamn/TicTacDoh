@@ -15,86 +15,104 @@ document.querySelectorAll("td")[3].innerText = sessionStorage.player1; //inputs 
 document.querySelectorAll("td")[5].innerText = sessionStorage.player2;
 document.querySelectorAll("td")[4].innerText = sessionStorage.drawgame;
 
-//Initialising Player names with sessionstorage
-if (!sessionStorage.p1Name && !sessionStorage.p2Name) {
+//Inputting player names into h2 and scoreboard
+const inputNames = () => {
+    document.getElementById("pTurn").innerText = sessionStorage.p1Name
+    document.getElementById("pTurn").style.color = "#E1DFD7"
+    document.querySelectorAll("td")[0].innerText = sessionStorage.p1Name;
+    document.querySelectorAll("td")[2].innerText = sessionStorage.p2Name;
+}
+
+inputNames(); //Inputs names to display; also for when displaying after refreshes.
+
+//To ask for player names; and if too long, reenter name; and if null or zero string, default to player 1 & 2. Then input names
+const askName = () => {
     sessionStorage.p1Name = prompt("Please enter Player 1 name");
     sessionStorage.p2Name = prompt("Please enter Player 2 name");
+    if (sessionStorage.p1Name.length >= 9 || sessionStorage.p2Name.length >= 9) {
+        Swal.fire({
+            title: "Name too long! Try less than 9 characters!",
+            icon: "error",
+        })
+        setTimeout(askName, 3000)
+    }
     if (sessionStorage.p1Name == "" || sessionStorage.p1Name == "null") {
         sessionStorage.p1Name = "Player 1"
     }
     if (sessionStorage.p2Name == "" || sessionStorage.p2Name == "null") {
         sessionStorage.p2Name = "Player 2"
     }
+    inputNames();
 }
 
-//Inputting player names into h2 and scoreboard
-document.querySelector("h2").innerText = "Start the game with " + sessionStorage.p1Name + " making a move!";
-document.querySelectorAll("td")[0].innerText = sessionStorage.p1Name;
-document.querySelectorAll("td")[2].innerText = sessionStorage.p2Name;
+//Initialising Player names with sessionstorage
+if (!sessionStorage.p1Name && !sessionStorage.p2Name) {
+    askName();
+}
 
 //Array to track who wins or not (used later in checkX and checkO function)
-let xArray = ["X", "X", "X"];
-let winX = xArray.toString();
-let yArray = ["O", "O", "O"];
-let winY = yArray.toString();
-let homerArray = ['<img src="assets/icons/Homerlah.png">', '<img src="assets/icons/Homerlah.png">', '<img src="assets/icons/Homerlah.png">'];
-let winHomer = homerArray.toString();
-let margeArray = ['<img src="assets/icons/Marge.png">', '<img src="assets/icons/Marge.png">', '<img src="assets/icons/Marge.png">'];
-let winMarge = margeArray.toString();
+const xArray = ["X", "X", "X"];
+const winX = xArray.toString();
+const yArray = ["O", "O", "O"];
+const winY = yArray.toString();
+const homerArray = ['<img src="assets/icons/Homerlah.png">', '<img src="assets/icons/Homerlah.png">', '<img src="assets/icons/Homerlah.png">'];
+const winHomer = homerArray.toString();
+const margeArray = ['<img src="assets/icons/Marge.png">', '<img src="assets/icons/Marge.png">', '<img src="assets/icons/Marge.png">'];
+const winMarge = margeArray.toString();
 
 //----------------------------------- INITIALISING AUDIO WITH RESPECTIVE FUNCTIONS ---------------------------------------
 // Audio stuff
-let audioHello = new Audio("assets/sounds/hello-3.mp3");
-let audioRoar = new Audio("assets/sounds/roar.mp3");
-let audioDoh = new Audio("assets/sounds/doh-2.mp3");
-let audioWhoo = new Audio("assets/sounds/whoo.mp3");
-let audioWin1 = new Audio("assets/sounds/no-losers.mp3");
-let audioWin2 = new Audio("assets/sounds/fun-day-with-your-daddy.mp3");
-let audioDraw = new Audio("assets/sounds/haha-2.mp3");
-let audioAgain = new Audio("assets/sounds/IT DOESN'T MATTER.mp3");
-let audioReset = new Audio("assets/sounds/911.mp3");
-let audioIcon1 = new Audio("assets/sounds/be-on-tv.mp3")
-let audioIcon2 = new Audio("assets/sounds/hello-everyone.mp3")
-let audioBg = new Audio("assets/sounds/The Simpsons.mp3")
+const audioHello = new Audio("assets/sounds/hello-3.mp3");
+const audioRoar = new Audio("assets/sounds/roar.mp3");
+const audioDoh = new Audio("assets/sounds/doh-2.mp3");
+const audioWhoo = new Audio("assets/sounds/whoo.mp3");
+const audioWin1 = new Audio("assets/sounds/no-losers.mp3");
+const audioWin2 = new Audio("assets/sounds/fun-day-with-your-daddy.mp3");
+const audioDraw = new Audio("assets/sounds/haha-2.mp3");
+const audioAgain = new Audio("assets/sounds/IT DOESN'T MATTER.mp3");
+const audioReset = new Audio("assets/sounds/911.mp3");
+const audioIcon1 = new Audio("assets/sounds/be-on-tv.mp3")
+const audioIcon2 = new Audio("assets/sounds/hello-everyone.mp3")
+const audioBg = new Audio("assets/sounds/Spider Pig.mp3")
 audioBg.volume = 0.45;
 
-function icon1Sound() {
+const icon1Sound = () => {
     audioIcon1.play();
 }
-function icon2Sound() {
+const icon2Sound = () => {
     audioIcon2.play()
 }
-function helloSound() {
+const helloSound = () => {
     audioHello.play();
 }
-function roarSound() {
+const roarSound = () => {
     audioRoar.play();
 }
-function dohSound() {
+const dohSound = () => {
     audioDoh.play();
 }
-function whooSound() {
+const whooSound = () => {
     audioWhoo.play();
 }
-function win1Sound() {
+const win1Sound = () => {
     audioWin1.play();
 }
-function win2Sound() {
+const win2Sound = () => {
     audioWin2.play();
 }
-function drawSound() {
+const drawSound = () => {
     audioDraw.play();
 }
-function againSound() {
+const againSound = () => {
     audioAgain.play();
 }
-function resetSound() {
+const resetSound = () => {
     audioReset.play();
 }
-function playBgMusic() {
+const playBgMusic = () => {
     audioBg.play();
 }
-function pauseBgMusic() {
+const pauseBgMusic = () => {
     audioBg.pause();
 }
 
@@ -113,7 +131,7 @@ function stopAllSounds() {
 }
 
 //------------------------------------------------ GAME MECHANIC FUNCTIONS ---------------------------------------------------------
-// Function to disable all buttons
+// Function to disable all buttons (signals end of round)
 const disableButtons = () => {
     for (i = 1; i < 10; i++) {
         document.getElementsByName("button" + i)[0].disabled = true;
@@ -288,7 +306,6 @@ const playGame = (num) => {
             title: "It's a draw!",
             confirmButtonColor: "#363E61",
             imageUrl: 'assets/icons/Draw.png',
-            // imageWidth: 250,
             imageHeight: 250,
         })
         addDrawScore();
@@ -311,21 +328,18 @@ const againGame = () => {
         document.getElementsByName("button" + i)[0].disabled = false;
     }
 
-    document.querySelector("h2").innerText = "Start the game with " + sessionStorage.p1Name + " making a move!";
+    document.querySelector("h2").innerHTML = 'Start the game with <span id="pTurn">' + sessionStorage.p1Name + "</span> making a move!";
+    document.getElementById("pTurn").style.color = "#E1DFD7"
 
     document.getElementById('strike').classList = "strike"
 }
 
 //Total reset of game, with new names and clean score (listens to reset button click)
 const resetGame = () => {
-    sessionStorage.p1Name = prompt("Please enter Player 1 name");
-    sessionStorage.p2Name = prompt("Please enter Player 2 name");
-    if (sessionStorage.p1Name == "" || sessionStorage.p1Name == "null") {
-        sessionStorage.p1Name = "Player 1"
-    }
-    if (sessionStorage.p2Name == "" || sessionStorage.p2Name == "null") {
-        sessionStorage.p2Name = "Player 2"
-    }
+    againGame();
+    audioAgain.pause();
+    audioAgain.currentTime = 0;
+    askName();
     resetSound();
     sessionStorage.player1 = 0;
     sessionStorage.player2 = 0;
@@ -335,32 +349,29 @@ const resetGame = () => {
     document.querySelectorAll("td")[3].innerText = sessionStorage.player1;
     document.querySelectorAll("td")[5].innerText = sessionStorage.player2;
     document.querySelectorAll("td")[4].innerText = sessionStorage.drawgame;
-    againGame();
-    audioAgain.pause();
-    audioAgain.currentTime = 0;
 }
 
 //---------------------------------- MISCELLANEOUS STUFF --------------------------------------------------------
 //Play button image change
 let playButton = document.getElementsByClassName("play")[0];
 
-playButton.addEventListener("mouseover", function() {
+playButton.addEventListener("mouseover", function () {
     playButton.src = "assets/icons/play3.png"
 }, false)
 
-playButton.addEventListener("mouseout", function() {
-    playButton.src = "assets/icons/play2.png"    
+playButton.addEventListener("mouseout", function () {
+    playButton.src = "assets/icons/play2.png"
 }, false)
 
 //Pause button image change
 let pauseButton = document.getElementsByClassName("pause")[0];
 
-pauseButton.addEventListener("mouseover", function() {
+pauseButton.addEventListener("mouseover", function () {
     pauseButton.src = "assets/icons/pause3.png"
 }, false)
 
-pauseButton.addEventListener("mouseout", function() {
-    pauseButton.src = "assets/icons/pause2.png"    
+pauseButton.addEventListener("mouseout", function () {
+    pauseButton.src = "assets/icons/pause2.png"
 }, false)
 
 //flag to initialise which icon is used
@@ -369,7 +380,7 @@ if (!sessionStorage.iconOption) {
 }
 
 //Function to change icons
-function changeIcon() {
+const changeIcon = () => {
     againGame();
     audioAgain.pause();
     audioAgain.currentTime = 0;
