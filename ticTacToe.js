@@ -56,7 +56,7 @@ let audioReset = new Audio("assets/sounds/911.mp3");
 let audioIcon1 = new Audio("assets/sounds/be-on-tv.mp3")
 let audioIcon2 = new Audio("assets/sounds/hello-everyone.mp3")
 let audioBg = new Audio("assets/sounds/The Simpsons.mp3")
-audioBg.volume = 0.5;
+audioBg.volume = 0.45;
 
 function icon1Sound() {
     audioIcon1.play();
@@ -168,7 +168,7 @@ const player2Wins = () => {
     isDraw = false;
 }
 
-//Function to check if player 1 (X) has won and adds a strikethrough class to show how way p1 has won
+//Function to check if player 1 (X) has won and adds a strikethrough class to show how p1 has won
 const checkX = () => {
     but1 = document.getElementsByName("button1")[0].innerHTML;
     but2 = document.getElementsByName("button2")[0].innerHTML;
@@ -284,7 +284,13 @@ const playGame = (num) => {
 
     if (playerTracker >= 9 && isDraw === true) {
         document.querySelector("h2").innerText = "It's a draw!"
-        Swal.fire("It's a draw!")
+        Swal.fire({
+            title: "It's a draw!",
+            confirmButtonColor: "#363E61",
+            imageUrl: 'assets/icons/Draw.png',
+            // imageWidth: 250,
+            imageHeight: 250,
+        })
         addDrawScore();
         drawSound();
     }
