@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TicTacD'oh!</title>
+    <link rel="shortcut icon" href="assets/icons/favicon.ico">
+    <link rel="stylesheet" href="style/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/sweetalert2@10.10.1/dist/sweetalert2.min.css'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+</head>
+
+<body>
+    <h1 onclick="helloSound()" class="animate__animated animate__heartBeat">Tic Tac D'oh!</h1>
+    <h2 onclick="roarSound()" class="animate__animated animate__pulse">Start the game with Player 1 making a move!</h2>
+    
+    <div>
+        <div id="tictacbox">
+            <div class="container">
+                <div class="boxes">
+                    <button class="button" name="button1" onclick="playGame('1')"> </button>
+                </div>
+                <div class="boxes">
+                    <button class="button" name="button2" onclick="playGame('2')"> </button>
+                </div>
+                <div class="boxes rightMost">
+                    <button class="button" name="button3" onclick="playGame('3')"> </button>
+                </div>
+            </div>
+            <div class="container">
+                <div class="boxes">
+                    <button class="button" name="button4" onclick="playGame('4')"> </button>
+                </div>
+                <div class="boxes">
+                    <button class="button" name="button5" onclick="playGame('5')"> </button>
+                </div>
+                <div class="boxes rightMost">
+                    <button class="button" name="button6" onclick="playGame('6')"> </button>
+                </div>
+            </div>
+            <div class="container">
+                <div class="boxes bottomMost">
+                    <button class="button" name="button7" onclick="playGame('7')"> </button>
+                </div>
+                <div class="boxes bottomMost">
+                    <button class="button" name="button8" onclick="playGame('8')"> </button>
+                </div>
+                <div class="boxes rightMost bottomMost">
+                    <button class="button" name="button9" onclick="playGame('9')"> </button>
+                </div>
+            </div>
+        </div>
+        <div id="strike" class="strike"></div>
+        <div id="scoreboard">
+            <table>
+                <tr>
+                    <td>P1</td>
+                    <td>Draws</td>
+                    <td>P2</td>
+                </tr>
+                <tr class="numScore">
+                    <td>0</td>
+                    <td>0</td>
+                    <td>0</td>
+                </tr>
+            </table>
+            <div class="gameReset">
+                <button class="reset" onclick="againGame()" title="Starts a new round!">Again</button>
+                <button class="reset" onclick="changeIcon()" title="Change the icons!">Icon change</button>
+                <button class="reset" onclick="resetGame()" title="Resets the whole game!">Reset</button>
+            </div>
+        </div>
+        <footer>
+            <div>
+                <h4><a title="Click!" class="copyright" href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+                        target="_blank">Copyright©
+                        Khairul 2022</a></h4>
+            </div>
+        </footer>
+    </div>
+    <div id="bgMusic">
+        <img class="play" src="assets/icons/play2.png" onclick="playBgMusic()" title="Play background music!"> 
+        <img class="pause" src="assets/icons/pause2.png" onclick="pauseBgMusic()" title="Pause background music!">
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.10.1/dist/sweetalert2.all.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="ticTacToe.js"></script>
+</body>
+
+</html>

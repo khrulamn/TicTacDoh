@@ -1,0 +1,254 @@
+/*------------------ Font ---------------------*/
+@font-face {
+    font-family: 'Simpsonfont';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Simpsonfont'), url('../assets/fonts/Simpsonfont.woff') format('woff');
+    }
+
+/*--------- Body ------------*/
+body {
+    background-color: #363E61;
+    width: 650px;
+    margin: auto;
+    font-family: 'Simpsonfont', sans-serif;
+    background-image: url('https://c.tenor.com/RukAQg6-ozIAAAAC/the-simpsons.gif');
+    box-shadow: inset 0 0 0 1000px rgba(0,0,0,.6);
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-bottom: 1px;
+    margin-bottom: 10px;
+}
+
+/*------------- Titles ----------------*/
+h1 {
+    text-align: center;
+    color: #E1DFD7;
+    font-size: 4.7rem;
+    margin-bottom: 25px;
+    margin-top: 20px;
+}
+
+h1:hover {
+    cursor: pointer;
+}
+
+h2 {
+    text-align: center;
+    color: #FBD13B;
+    font-size: 1.7rem;
+}
+
+h2:hover {
+    cursor: pointer;
+}
+
+/*---------------- Audio --------------------*/
+#bgMusic {
+    position: absolute;
+    top: 25px;
+    left: 20px;
+}
+
+.play {
+    width: 52px;
+    transform: rotate(-7deg);
+}
+
+.play:hover {
+    cursor: pointer;
+}
+
+.pause {
+    width: 40px;
+    position: relative;
+    top: -4px;
+    left: 0;
+    transform: rotate(5deg);
+}
+
+.pause:hover {
+    cursor: pointer;
+}
+/*--------- Containers ----------------*/
+.container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+.boxes {
+    margin:auto;
+    padding: 30px;
+    border-right : 10px solid #D3D2CB;
+    border-bottom: 10px solid #D3D2CB;
+}
+
+.rightMost {
+    border-right: none;
+}
+
+.bottomMost {
+    border-bottom: none;
+}
+
+#tictacbox {
+    width: 500px;
+    margin: auto;
+}
+
+/*------------- Tic Tac Toe Buttons --------------*/
+.button {
+    height: 100px;
+    width: 100px;
+    background-color: transparent;
+    margin: auto;
+    border: none;
+    font-family: 'Simpsonfont', sans-serif;
+    color: #FBD13B;
+}
+
+.button:hover {
+    background-color: #B5B8C2;
+    cursor: pointer;
+}
+
+.button:active {
+    background-color: #B5B8C2;
+}
+
+/*------ Strikethrough -----------*/
+.strike {
+    position: absolute;
+    background-color: #FBD13B;
+}
+
+.strike-row-1 {
+    width: 27%;
+    height: 10px;
+    top: 295px;
+    left: 700px;
+    opacity: 75%;
+}
+
+.strike-row-2 {
+    width: 27%;
+    height: 10px;
+    top: 470px;
+    left: 700px;
+    opacity: 75%;
+}
+
+.strike-row-3 {
+    width: 27%;
+    height: 10px;
+    top: 640px;
+    left: 700px;
+    opacity: 75%;
+}
+
+.strike-column-1 {
+    height: 50%;
+    width: 10px;
+    top: 220px;
+    left: 785px;
+    opacity: 75%;
+}
+.strike-column-2 {
+    height: 50%;
+    width: 10px;
+    top: 220px;
+    left: 960px;
+    opacity: 75%;
+}
+.strike-column-3 {
+    height: 50%;
+    width: 10px;
+    top: 220px;
+    left: 1130px;
+    opacity: 75%;
+}
+
+.strike-diagonal-1 {
+    width : 32%;
+    height : 10px;
+    top: 465px;
+    left: 650px;
+    transform: rotate(45deg);
+    opacity: 75%;
+}
+
+.strike-diagonal-2 {
+    width : 32%;
+    height : 10px;
+    top: 465px;
+    left: 650px;
+    transform: rotate(-45deg);
+    opacity: 75%;
+}
+
+/*---------------- Scoreboard ---------------*/
+#scoreboard {
+    text-align: center;
+    color: #FBD13B;
+}
+
+h3 {
+    font-size: 2rem;
+    margin-bottom: 0px;
+}
+
+table {
+    margin: auto;
+    font-size: 1.5rem;
+    width: 500px;
+}
+
+.numScore {
+    color: #E1DFD7;
+}
+
+/*-------------- Reset Button -------------*/
+.gameReset {
+    display: flex;
+    justify-content: center;
+    margin-top: 25px;
+    margin-bottom: 5px;
+}
+
+.reset {
+    display: inline-block;
+    padding: 0.35em 1.2em;
+    border: 0.1em solid #D3D2CB;
+    box-sizing: border-box;
+    text-decoration: none;
+    font-family: 'Simpsonfont', sans-serif;
+    font-weight: 400;
+    font-size: x-large;
+    color: #D3D2CB;
+    text-align: center;
+    transition: all 0.2s;
+    background-color: transparent;
+    margin: auto 20px;
+}
+
+.reset:hover {
+    background-color: #FBD13B;
+    color: #202556de; 
+    cursor: pointer;
+}
+
+/*------- Copyright -----------*/
+footer {
+    text-align: center;
+}
+
+.copyright {
+    text-decoration: none;
+    color: #FBD13B;
+    position: relative;
+    font-weight: 100;
+}
+
+.copyright:hover {
+    color: #D3D2CB;
+}
