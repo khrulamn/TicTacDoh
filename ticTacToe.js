@@ -73,8 +73,10 @@ const audioAgain = new Audio("assets/sounds/IT DOESN'T MATTER.mp3");
 const audioReset = new Audio("assets/sounds/911.mp3");
 const audioIcon1 = new Audio("assets/sounds/be-on-tv.mp3")
 const audioIcon2 = new Audio("assets/sounds/hello-everyone.mp3")
-const audioBg = new Audio("assets/sounds/Spider Pig.mp3")
-audioBg.volume = 0.45;
+const audioBg1 = new Audio("assets/sounds/Spider Pig.mp3")
+audioBg1.volume = 0.45;
+const audioBg2 = new Audio("assets/sounds/The Simpsons.mp3")
+audioBg2.volume = 0.45;
 
 const icon1Sound = () => {
     audioIcon1.play();
@@ -110,10 +112,18 @@ const resetSound = () => {
     audioReset.play();
 }
 const playBgMusic = () => {
-    audioBg.play();
+    let randoChoice = Math.floor(Math.random()*10) + 1; //randomise choice of bg music
+    if (!audioBg1.paused || !audioBg2.paused) {  //doesnt do anything if any of the bg music is playing
+        //pass
+    } else if(randoChoice % 2 === 0){
+        audioBg1.play();
+    } else {
+        audioBg2.play();
+    } 
 }
 const pauseBgMusic = () => {
-    audioBg.pause();
+    audioBg1.pause();
+    audioBg2.pause();
 }
 
 //stops all the sounds from playing
@@ -131,13 +141,6 @@ function stopAllSounds() {
 }
 
 //------------------------------------------------ GAME MECHANIC FUNCTIONS ---------------------------------------------------------
-// Function to disable all buttons (signals end of round)
-const disableButtons = () => {
-    for (i = 1; i < 10; i++) {
-        document.getElementsByName("button" + i)[0].disabled = true;
-    }
-}
-
 //Scoreboard (adds score depending on outcome of match)
 const addP1Score = () => {
     sessionStorage.player1 = Number(sessionStorage.player1) + 1;
@@ -152,6 +155,13 @@ const addP2Score = () => {
 const addDrawScore = () => {
     sessionStorage.drawgame = Number(sessionStorage.drawgame) + 1;
     document.querySelectorAll("td")[4].innerText = sessionStorage.drawgame;
+}
+
+// Function to disable all buttons (signals end of round)
+const disableButtons = () => {
+    for (i = 1; i < 10; i++) {
+        document.getElementsByName("button" + i)[0].disabled = true;
+    }
 }
 
 // Alerts for player 1 wins, disable buttons, add score, and make sure a draw is not the output
@@ -285,6 +295,7 @@ const playGame = (num) => {
             getBox.innerHTML = "<img src='assets/icons/Marge.png'>"
         } else {
             getBox.innerText = "O";
+            getBox.style.color = "#D3D2CB";
         }
         getBox.style.fontSize = '400%';
         getBox.disabled = true;
@@ -321,11 +332,15 @@ const againGame = () => {
     isDraw = true;
 
     for (i = 1; i < 10; i++) {
-        document.getElementsByName("button" + i)[0].innerText = "";
+        document.getElementsByName("button" + i)[0].innerText = "";  //deletes all of the input of x's & o's
     }
 
     for (i = 1; i < 10; i++) {
-        document.getElementsByName("button" + i)[0].disabled = false;
+        document.getElementsByName("button" + i)[0].disabled = false; //enables the button again
+    }
+
+    for (i = 1; i < 10; i++) {
+        document.getElementsByName("button" + i)[0].style.color = "#FBD13B"; //defaults input colors back to yellow
     }
 
     document.querySelector("h2").innerHTML = 'Start the game with <span id="pTurn">' + sessionStorage.p1Name + "</span> making a move!";
