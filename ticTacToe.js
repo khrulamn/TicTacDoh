@@ -11,8 +11,9 @@ if (!sessionStorage.player1 && !sessionStorage.player2 && !sessionStorage.drawga
 
 let isDraw = true; //tracks if the game has drawn
 
+//inputs scores into scoreboard from session storage
 const inputScore = () => {
-    document.querySelectorAll("td")[3].innerText = sessionStorage.player1; //inputs scores into scoreboard from session storage
+    document.querySelectorAll("td")[3].innerText = sessionStorage.player1; 
     document.querySelectorAll("td")[5].innerText = sessionStorage.player2;
     document.querySelectorAll("td")[4].innerText = sessionStorage.drawgame;
 }
