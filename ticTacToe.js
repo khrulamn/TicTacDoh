@@ -23,8 +23,6 @@ const inputNames = () => {
     document.querySelectorAll("td")[2].innerText = sessionStorage.p2Name;
 }
 
-inputNames(); //Inputs names to display; also for when displaying after refreshes.
-
 //To ask for player names; and if too long, reenter name; and if null or zero string, default to player 1 & 2. Then input names
 const askName = () => {
     sessionStorage.p1Name = prompt("Please enter Player 1 name");
@@ -49,6 +47,8 @@ const askName = () => {
 if (!sessionStorage.p1Name && !sessionStorage.p2Name) {
     askName();
 }
+
+inputNames(); //Inputs names to display; also for when displaying after refreshes.
 
 //Array to track who wins or not (used later in checkX and checkO function)
 const xArray = ["X", "X", "X"];
