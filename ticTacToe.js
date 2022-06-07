@@ -11,9 +11,13 @@ if (!sessionStorage.player1 && !sessionStorage.player2 && !sessionStorage.drawga
 
 let isDraw = true; //tracks if the game has drawn
 
-document.querySelectorAll("td")[3].innerText = sessionStorage.player1; //inputs scores into scoreboard from session storage
-document.querySelectorAll("td")[5].innerText = sessionStorage.player2;
-document.querySelectorAll("td")[4].innerText = sessionStorage.drawgame;
+const inputScore = () => {
+    document.querySelectorAll("td")[3].innerText = sessionStorage.player1; //inputs scores into scoreboard from session storage
+    document.querySelectorAll("td")[5].innerText = sessionStorage.player2;
+    document.querySelectorAll("td")[4].innerText = sessionStorage.drawgame;
+}
+
+inputScore();
 
 //Inputting player names into h2 and scoreboard
 const inputNames = () => {
@@ -112,14 +116,14 @@ const resetSound = () => {
     audioReset.play();
 }
 const playBgMusic = () => {
-    let randoChoice = Math.floor(Math.random()*10) + 1; //randomise choice of bg music
+    let randoChoice = Math.floor(Math.random() * 10) + 1; //randomise choice of bg music
     if (!audioBg1.paused || !audioBg2.paused) {  //doesnt do anything if any of the bg music is playing
         //pass
-    } else if(randoChoice % 2 === 0){
+    } else if (randoChoice % 2 === 0) {
         audioBg1.play();
     } else {
         audioBg2.play();
-    } 
+    }
 }
 const pauseBgMusic = () => {
     audioBg1.pause();
@@ -359,11 +363,8 @@ const resetGame = () => {
     sessionStorage.player1 = 0;
     sessionStorage.player2 = 0;
     sessionStorage.drawgame = 0;
-    document.querySelectorAll("td")[0].innerText = sessionStorage.p1Name;
-    document.querySelectorAll("td")[2].innerText = sessionStorage.p2Name;
-    document.querySelectorAll("td")[3].innerText = sessionStorage.player1;
-    document.querySelectorAll("td")[5].innerText = sessionStorage.player2;
-    document.querySelectorAll("td")[4].innerText = sessionStorage.drawgame;
+    inputScore();
+    inputNames();
 }
 
 //---------------------------------- MISCELLANEOUS STUFF --------------------------------------------------------
